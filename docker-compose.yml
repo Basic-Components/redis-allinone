@@ -1,8 +1,7 @@
 version: '3.6'
 services:
-  redis-cell:
-    build: ./
+  redis-inone:
+    image: hsz1273327/redis-allinone:1.1.0
     ports:
       - "6380:6379"
       
-    

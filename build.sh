@@ -1,1 +1,1 @@
-docker buildx build --push --platform=linux/arm64,linux/amd64 -t hsz1273327/redis-allinone:1.0.0 -t hsz1273327/redis-allinone:latest -t hsz1273327/redis-allinone:1.0.0-redis6.2.4-cell0.3.0 -t hsz1273327/redis-allinone:latest-redis6.2.4-cell0.3.0 .
+docker buildx build --push --platform=linux/arm64,linux/amd64 -t hsz1273327/redis-allinone:1.1.0 -t hsz1273327/redis-allinone:latest .

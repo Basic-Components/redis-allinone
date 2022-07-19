@@ -61,7 +61,7 @@
 
 ## 使用方法
 
-默认配置文件在镜像中的`/etc/redis-config/redis.conf`,其内容为根目录下`conf/redis.conf`,如果要加额外参数我们需要指定这个路径
+默认配置文件在镜像中的[/etc/redis-config/redis.conf](https://github.com/Basic-Components/redis-allinone/blob/master/conf/redis.conf);默认集群配置在镜像中的[/etc/redis-config/redis.cluster.conf](https://github.com/Basic-Components/redis-allinone/blob/master/conf/redis.cluster.conf),使用时如果要添加其他参数,需要覆盖dockerfile中的`cmd`,比如在`docker-compose`中配置`command: ["/etc/redis-config/redis.conf", "--requirepass", "admin"]`
 
 ### 单机模式
 

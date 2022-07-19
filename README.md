@@ -65,7 +65,7 @@
 
 ### 单机模式
 
-对应docker-compose为`docker-compose.standalone.yml`
+对应docker-compose为[docker-compose.standalone.yml](https://github.com/Basic-Components/redis-allinone/blob/master/docker-compose.standalone.yml)
 
 1. 使用docker-compose启动`docker-compose -f docker-compose.standalone.yml up -d`
 
@@ -75,7 +75,7 @@
 
 ### 主从模式
 
-对应docker-compose为`docker-compose.mr.yml`
+对应docker-compose为[docker-compose.mr.yml](https://github.com/Basic-Components/redis-allinone/blob/master/docker-compose.mr.yml)
 
 1. 使用docker-compose启动`docker-compose -f docker-compose.mr.yml up -d`
 
@@ -87,7 +87,7 @@
 
 ### 哨兵模式
 
-对应docker-compose为`docker-compose.sentinel.yml`,`sentinel.conf.temp`为配置样例
+对应docker-compose为[docker-compose.sentinel.yml](https://github.com/Basic-Components/redis-allinone/blob/master/docker-compose.sentinel.yml),[sentinel.conf.temp](https://github.com/Basic-Components/redis-allinone/blob/master/sentinel/sentinel.conf.temp)为配置样例
 
 1. 使用docker-compose启动`docker-compose -f docker-compose.sentinel.yml up -d`
 
@@ -99,7 +99,7 @@
 
 ### 集群模式
 
-对应docker-compose为`docker-compose.cluster.yml`,注意如果使用swarm集群请使用**host方式**部署
+对应docker-compose为[docker-compose.cluster.yml](https://github.com/Basic-Components/redis-allinone/blob/master/docker-compose.cluster.yml),注意如果使用swarm集群请使用**host方式**部署
 
 1. 使用docker-compose启动`docker-compose -f docker-compose.cluster.yml up -d`
 2. 进入node1容器调试`docker exec -it redis-allinone-redis-node1-1 /bin/sh`

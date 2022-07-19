@@ -1,3 +1,11 @@
+# v1.2.0
+
++ 新增插件RedisJSON
++ 新增插件redistree
++ 新增插件RedisTimeSeries
++ 修改dockerfile,改用cmd+默认配置文件的方式提高适应性
++ 新增不同部署方式的演示docker-compose及对应说明
+
 # v1.1.0
 
 + 更新redis版本至redis 7

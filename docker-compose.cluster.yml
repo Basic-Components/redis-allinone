@@ -1,7 +1,7 @@
 version: '3.6'
 services:
   redis-node1:
-    image: hsz1273327/redis-allinone:1.2.0
+    image: hsz1273327/redis-allinone:redis6-1.2.1
     networks:
       hfnet:
         ipv4_address: 192.168.55.11
@@ -13,7 +13,7 @@ services:
       - "redis-node1"
 
   redis-node2:
-    image: hsz1273327/redis-allinone:1.2.0
+    image: hsz1273327/redis-allinone:redis6-1.2.1
     networks:
       hfnet:
         ipv4_address: 192.168.55.12
@@ -25,7 +25,7 @@ services:
       - "redis-node2"
 
   redis-node3:
-    image: hsz1273327/redis-allinone:1.2.0
+    image: hsz1273327/redis-allinone:redis6-1.2.1
     networks:
       hfnet:
         ipv4_address: 192.168.55.13
@@ -37,7 +37,7 @@ services:
       - "redis-node3"
 
   redis-node4:
-    image: hsz1273327/redis-allinone:1.2.0
+    image: hsz1273327/redis-allinone:redis6-1.2.1
     networks:
       hfnet:
         ipv4_address: 192.168.55.14
@@ -49,7 +49,7 @@ services:
       - "redis-node4"
 
   redis-node5:
-    image: hsz1273327/redis-allinone:1.2.0
+    image: hsz1273327/redis-allinone:redis6-1.2.1
     networks:
       hfnet:
         ipv4_address: 192.168.55.15
@@ -61,7 +61,7 @@ services:
       - "redis-node5"
 
   redis-node6:
-    image: hsz1273327/redis-allinone:1.2.0
+    image: hsz1273327/redis-allinone:redis6-1.2.1
     networks:
       hfnet:
         ipv4_address: 192.168.55.16

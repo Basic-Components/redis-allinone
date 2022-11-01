@@ -1,12 +1,12 @@
 version: '3.6'
 services:
   redis-inone-master:
-    image: hsz1273327/redis-allinone:1.2.0
+    image: hsz1273327/redis-allinone:redis6-1.2.1
     ports:
       - "6380:6379"
 
   redis-inone-replica1:
-    image: hsz1273327/redis-allinone:1.2.0
+    image: hsz1273327/redis-allinone:redis6-1.2.1
     ports:
       - "6381:6379"
     depends_on:
@@ -19,7 +19,7 @@ services:
       - --replica-read-only 
       - "yes"
   redis-inone-replica2:
-    image: hsz1273327/redis-allinone:1.2.0
+    image: hsz1273327/redis-allinone:redis6-1.2.1
     ports:
       - "6382:6379"
     depends_on:
@@ -33,7 +33,7 @@ services:
       - "yes"
       
   redis-inone-sentinel1:
-    image: hsz1273327/redis-allinone:1.2.0
+    image: hsz1273327/redis-allinone:redis6-1.2.1
     ports:
       - "26379:26379"
     depends_on:
@@ -43,7 +43,7 @@ services:
     command: "redis-server /conf/sentinel.conf --sentinel"
 
   redis-inone-sentinel2:
-    image: hsz1273327/redis-allinone:1.2.0
+    image: hsz1273327/redis-allinone:redis6-1.2.1
     ports:
       - "26380:26379"
     depends_on:
@@ -53,7 +53,7 @@ services:
     command: "/conf/sentinel.conf --sentinel"
 
   redis-inone-sentinel3:
-    image: hsz1273327/redis-allinone:1.2.0
+    image: hsz1273327/redis-allinone:redis6-1.2.1
     ports:
       - "26381:26379"
     depends_on:

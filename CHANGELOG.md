@@ -1,3 +1,17 @@
+# redis6-1.2.1
+
+## 项目更新
+
+1. 更新了版本命名模式
+2. 引入github-action自动打包
+
+## 版本更新
+
++ redis 7.0.3->6.2.7
++ RedisBloom 2.2.15->2.2.18
++ RedisJSON 2.0.9->2.0.11
++ RedisTimeSeries 1.6.16->1.6.17
+
 # v1.2.0
 
 + 新增插件RedisJSON

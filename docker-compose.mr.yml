@@ -1,11 +1,11 @@
 version: '3.6'
 services:
   redis-inone-master:
-    image: hsz1273327/redis-allinone:1.2.0
+    image: hsz1273327/redis-allinone:redis7-1.2.0
     ports:
       - "6380:6379"
   redis-inone-replica1:
-    image: hsz1273327/redis-allinone:1.2.0
+    image: hsz1273327/redis-allinone:redis7-1.2.0
     ports:
       - "6381:6379"
     depends_on:
@@ -18,7 +18,7 @@ services:
       - --replica-read-only 
       - "yes"
   redis-inone-replica2:
-    image: hsz1273327/redis-allinone:1.2.0
+    image: hsz1273327/redis-allinone:redis7-1.2.0
     ports:
       - "6382:6379"
     depends_on:

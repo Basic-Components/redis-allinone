@@ -1,4 +1,4 @@
-FROM --platform=${TARGETPLATFORM} redis:7.0.3-bullseye as redisbloom_builder
+FROM --platform=${TARGETPLATFORM} redis:7.0.5-bullseye as redisbloom_builder
 RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 RUN apt update -y && apt install -y --no-install-recommends ca-certificates curl git build-essential && rm -rf /var/lib/apt/lists/*
 # Build the source
@@ -12,7 +12,7 @@ RUN ./system-setup.py
 RUN bash -l -c "make all"
 
 
-FROM --platform=${TARGETPLATFORM} redis:7.0.3-bullseye as redis-roaring_builder
+FROM --platform=${TARGETPLATFORM} redis:7.0.5-bullseye as redis-roaring_builder
 RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 RUN apt update -y && apt install -y --no-install-recommends ca-certificates curl git build-essential cmake && rm -rf /var/lib/apt/lists/*
 # Build the source
@@ -46,7 +46,7 @@ WORKDIR /build
 RUN cargo build --release
 
 
-FROM --platform=${TARGETPLATFORM} redis:7.0.3-bullseye as redistimeseries_builder
+FROM --platform=${TARGETPLATFORM} redis:7.0.5-bullseye as redistimeseries_builder
 RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 RUN apt update -y && apt install -y --no-install-recommends ca-certificates curl git build-essential && rm -rf /var/lib/apt/lists/*
 # Build the source
@@ -59,7 +59,7 @@ RUN ./system-setup.py
 RUN bash -l -c "make build"
 
 
-FROM --platform=${TARGETPLATFORM} redis:7.0.3-bullseye as img
+FROM --platform=${TARGETPLATFORM} redis:7.0.5-bullseye as img
 ARG TARGETPLATFORM ${TARGETPLATFORM}
 RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 RUN apt update -y && apt install -y --no-install-recommends ca-certificates && rm -rf /var/lib/apt/lists/*

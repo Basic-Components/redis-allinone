@@ -3,14 +3,9 @@
 + author: hsz
 + 镜像地址: <https://hub.docker.com/repository/docker/hsz1273327/redis-allinone>
 + github地址: <https://github.com/Basic-Components/redis-allinone>
++ 版本: redis7-1.2.1
 
-带实用扩展的redis镜像
-
-## 版本
-
-+ [v1.2.0,latest](https://github.com/Basic-Components/redis-allinone/blob/master/dockerfile)
-+ [v1.1.0](https://github.com/Basic-Components/redis-allinone/blob/v1.1.0/dockerfile)
-+ [v1.0.0](https://github.com/Basic-Components/redis-allinone/blob/v1.0.0/dockerfile)
+带实用扩展的redis镜像,本分支针对*redis7*
 
 ## 使用范围
 
@@ -28,7 +23,7 @@
         + 单机模式
         + 主从模式
         + 集群模式
-2. [RedisBloom@v2.2.15](https://github.com/RedisBloom/RedisBloom/tree/ver2.2.15)用于做布隆过滤器.
+2. [RedisBloom](https://github.com/RedisBloom/RedisBloom)用于做布隆过滤器.
     + 可用范围:
         + 单机模式
         + 主从模式
@@ -43,7 +38,7 @@
         + 单机模式
         + 主从模式
         + 集群模式
-5. [RedisJSON@v2.0.9](https://github.com/RedisJSON/RedisJSON/tree/v2.0.9)
+5. [RedisJSON](https://github.com/RedisJSON/RedisJSON)
     + 可用范围:
         + 单机模式
         + 主从模式
@@ -53,7 +48,7 @@
         + 单机模式
         + 主从模式(m可用,r不会获得key)
         + 集群模式(未测试高可用下被r替换后是否可用)
-7. [RedisTimeSeries@v1.6.16](https://github.com/RedisTimeSeries/RedisTimeSeries/tree/v1.6.16)
+7. [RedisTimeSeries](https://github.com/RedisTimeSeries/RedisTimeSeries)
     + 可用范围:
         + 单机模式
         + 主从模式

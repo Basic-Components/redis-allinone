@@ -35,7 +35,7 @@ RUN cargo build --release
 FROM --platform=${TARGETPLATFORM} redis:7.0.5-bullseye as redistimeseries_builder
 RUN apt update -y && apt install -y --no-install-recommends ca-certificates curl git build-essential && rm -rf /var/lib/apt/lists/*
 WORKDIR /
-RUN git clone -b v1.6.17 --recursive https://github.com/RedisTimeSeries/RedisTimeSeries.git /build
+RUN git clone -b v1.6.16 --recursive https://github.com/RedisTimeSeries/RedisTimeSeries.git /build
 WORKDIR /build
 RUN ./deps/readies/bin/getpy3
 RUN ./system-setup.py

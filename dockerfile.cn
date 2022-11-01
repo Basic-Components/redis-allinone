@@ -52,7 +52,7 @@ RUN apt update -y && apt install -y --no-install-recommends ca-certificates curl
 # Build the source
 WORKDIR /
 # 本地打包用 RUN export ALL_PROXY=192.168.1.201:7890
-RUN git clone -b v1.6.17 --recursive https://github.com/RedisTimeSeries/RedisTimeSeries.git /build
+RUN git clone -b v1.6.16 --recursive https://github.com/RedisTimeSeries/RedisTimeSeries.git /build
 WORKDIR /build
 RUN ./deps/readies/bin/getpy3
 RUN ./system-setup.py

@@ -19,7 +19,7 @@
 ## 环境介绍
 
 + 操作系统: debian-bullseye
-+ 基镜像: [redis:7.0.3-bullseye](https://hub.docker.com/layers/redis/library/redis/7.0.3-bullseye/images/sha256-ac68f247b2758660d03e52f5d2eb88a1ea12bb1b717d5f1a061715de6726e330?context=explore)
++ 基镜像: redis:7.0.5-bullseye
 
 收录实用插件包括:
 

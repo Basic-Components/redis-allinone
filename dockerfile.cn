@@ -1,4 +1,5 @@
-FROM --platform=${TARGETPLATFORM} redis:7.0.5-bullseye as redisbloom_builder
+FROM --platform=${TARGETPLATFORM} redis:6.2.7-bullseye as redisbloom_builder
+# RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 04EE7237B7D453EC 648ACFD622F3D138
 RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 RUN apt update -y && apt install -y --no-install-recommends ca-certificates curl git build-essential && rm -rf /var/lib/apt/lists/*
 # Build the source
@@ -12,7 +13,8 @@ RUN ./system-setup.py
 RUN bash -l -c "make all"
 
 
-FROM --platform=${TARGETPLATFORM} redis:7.0.5-bullseye as redis-roaring_builder
+FROM --platform=${TARGETPLATFORM} redis:6.2.7-bullseye as redis-roaring_builder
+# RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 04EE7237B7D453EC 648ACFD622F3D138
 RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 RUN apt update -y && apt install -y --no-install-recommends ca-certificates curl git build-essential cmake && rm -rf /var/lib/apt/lists/*
 # Build the source
@@ -24,6 +26,7 @@ WORKDIR /build
 RUN bash configure.sh
 
 FROM --platform=${TARGETPLATFORM} rust:1.62.0-slim-bullseye as redisjson_builder
+# RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 04EE7237B7D453EC 648ACFD622F3D138
 RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 RUN apt update -y && apt install -y --no-install-recommends ca-certificates curl git build-essential libclang-dev && rm -rf /var/lib/apt/lists/*
 # Build the source
@@ -34,19 +37,9 @@ WORKDIR /build
 # RUN git submodule pull
 RUN cargo build --release
 
-FROM --platform=${TARGETPLATFORM} rust:1.62.0-slim-bullseye as redistree_builder
-RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
-RUN apt update -y && apt install -y --no-install-recommends ca-certificates curl git build-essential libclang-dev && rm -rf /var/lib/apt/lists/*
-# Build the source
-WORKDIR /
-# 本地打包用 RUN export ALL_PROXY=192.168.1.201:7890
-RUN git clone --recursive -b v0.1.0 https://github.com/OhBonsai/RedisTree.git /build
-WORKDIR /build
-# RUN git submodule pull
-RUN cargo build --release
 
-
-FROM --platform=${TARGETPLATFORM} redis:7.0.5-bullseye as redistimeseries_builder
+FROM --platform=${TARGETPLATFORM} redis:6.2.7-bullseye as redistimeseries_builder
+# RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 04EE7237B7D453EC 648ACFD622F3D138
 RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 RUN apt update -y && apt install -y --no-install-recommends ca-certificates curl git build-essential && rm -rf /var/lib/apt/lists/*
 # Build the source
@@ -59,7 +52,8 @@ RUN ./system-setup.py
 RUN bash -l -c "make build"
 
 
-FROM --platform=${TARGETPLATFORM} redis:7.0.5-bullseye as img
+FROM --platform=${TARGETPLATFORM} redis:6.2.7-bullseye as img
+# RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 04EE7237B7D453EC 648ACFD622F3D138
 ARG TARGETPLATFORM ${TARGETPLATFORM}
 RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 RUN apt update -y && apt install -y --no-install-recommends ca-certificates && rm -rf /var/lib/apt/lists/*

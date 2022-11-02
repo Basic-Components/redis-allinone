@@ -43,12 +43,7 @@
         + 单机模式
         + 主从模式
         + 集群模式
-6. [redistree@v0.1.0](https://github.com/OhBonsai/RedisTree/tree/v0.1.0),
-    + 可用范围:
-        + 单机模式
-        + 主从模式(m可用,r不会获得key)
-        + 集群模式(未测试高可用下被r替换后是否可用)
-7. [RedisTimeSeries](https://github.com/RedisTimeSeries/RedisTimeSeries)
+6. [RedisTimeSeries](https://github.com/RedisTimeSeries/RedisTimeSeries)
     + 可用范围:
         + 单机模式
         + 主从模式

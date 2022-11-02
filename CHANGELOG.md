@@ -10,7 +10,10 @@
 + redis 7.0.3->7.0.5
 + RedisBloom 2.2.15->2.2.18
 + RedisJSON 2.0.9->2.0.11
-+ RedisTimeSeries 1.6.16->1.6.17
+
+## 移除项
+
++ redistree 确实找不到使用场景
 
 # v1.2.0
 

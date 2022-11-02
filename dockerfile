@@ -23,14 +23,6 @@ RUN git clone --recursive -b v2.0.11 https://github.com/RedisJSON/RedisJSON.git 
 WORKDIR /build
 RUN cargo build --release
 
-FROM --platform=${TARGETPLATFORM} rust:1.62.0-slim-bullseye as redistree_builder
-RUN apt update -y && apt install -y --no-install-recommends ca-certificates curl git build-essential libclang-dev && rm -rf /var/lib/apt/lists/*
-
-WORKDIR /
-RUN git clone --recursive -b v0.1.0 https://github.com/OhBonsai/RedisTree.git /build
-WORKDIR /build
-RUN cargo build --release
-
 
 FROM --platform=${TARGETPLATFORM} redis:7.0.5-bullseye as redistimeseries_builder
 RUN apt update -y && apt install -y --no-install-recommends ca-certificates curl git build-essential && rm -rf /var/lib/apt/lists/*

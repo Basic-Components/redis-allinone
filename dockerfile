@@ -16,7 +16,7 @@ RUN git clone --recursive https://github.com/aviggiano/redis-roaring.git /build
 WORKDIR /build
 RUN bash configure.sh
 
-FROM --platform=${TARGETPLATFORM} rust:1.62.0-slim-bullseye as redisjson_builder
+FROM --platform=${TARGETPLATFORM} rust:1.64.0-slim-bullseye as redisjson_builder
 RUN apt update -y && apt install -y --no-install-recommends ca-certificates curl git build-essential libclang-dev && rm -rf /var/lib/apt/lists/*
 WORKDIR /
 RUN git clone --recursive -b v2.0.11 https://github.com/RedisJSON/RedisJSON.git /build

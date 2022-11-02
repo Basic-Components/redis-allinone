@@ -25,7 +25,7 @@ WORKDIR /build
 # RUN git submodule pull
 RUN bash configure.sh
 
-FROM --platform=${TARGETPLATFORM} rust:1.62.0-slim-bullseye as redisjson_builder
+FROM --platform=${TARGETPLATFORM} rust:1.64.0-slim-bullseye as redisjson_builder
 # RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 04EE7237B7D453EC 648ACFD622F3D138
 RUN sed -i 's/deb.debian.org/mirrors.ustc.edu.cn/g' /etc/apt/sources.list
 RUN apt update -y && apt install -y --no-install-recommends ca-certificates curl git build-essential libclang-dev && rm -rf /var/lib/apt/lists/*

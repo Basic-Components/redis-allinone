@@ -16,12 +16,12 @@ RUN git clone --recursive https://github.com/aviggiano/redis-roaring.git /build
 WORKDIR /build
 RUN bash configure.sh
 
-FROM --platform=${TARGETPLATFORM} rust:1.64.0-slim-bullseye as redisjson_builder
-RUN apt update -y && apt install -y --no-install-recommends ca-certificates curl git build-essential libclang-dev && rm -rf /var/lib/apt/lists/*
-WORKDIR /
-RUN git clone --recursive -b v2.0.9 https://github.com/RedisJSON/RedisJSON.git /build
-WORKDIR /build
-RUN cargo build --release
+# FROM --platform=${TARGETPLATFORM} rust:1.64.0-slim-bullseye as redisjson_builder
+# RUN apt update -y && apt install -y --no-install-recommends ca-certificates curl git build-essential libclang-dev && rm -rf /var/lib/apt/lists/*
+# WORKDIR /
+# RUN git clone --recursive -b v2.0.9 https://github.com/RedisJSON/RedisJSON.git /build
+# WORKDIR /build
+# RUN cargo build --release
 
 
 FROM --platform=${TARGETPLATFORM} redis:7.0.5-bullseye as redistimeseries_builder
@@ -51,9 +51,9 @@ RUN chmod +x /etc/redis-plugins/redisroaring/libredis-roaring.so
 #redisql
 COPY ./RediSQL/${TARGETPLATFORM}/redisql.so /etc/redis-plugins/redisql/redisql.so
 RUN chmod +x /etc/redis-plugins/redisql/redisql.so
-#redisjson
-COPY --from=redisjson_builder /build/target/release/librejson.so /etc/redis-plugins/redisjson/librejson.so
-RUN chmod +x /etc/redis-plugins/redisjson/librejson.so
+# #redisjson
+# COPY --from=redisjson_builder /build/target/release/librejson.so /etc/redis-plugins/redisjson/librejson.so
+# RUN chmod +x /etc/redis-plugins/redisjson/librejson.so
 #redistimeseries
 COPY --from=redistimeseries_builder /build/bin/redistimeseries.so /etc/redis-plugins/redistimeseries/redistimeseries.so
 RUN chmod +x /etc/redis-plugins/redistimeseries/redistimeseries.so

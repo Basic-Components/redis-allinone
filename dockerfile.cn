@@ -32,7 +32,7 @@ RUN apt update -y && apt install -y --no-install-recommends ca-certificates curl
 # Build the source
 WORKDIR /
 # 本地打包用 RUN export ALL_PROXY=192.168.1.201:7890
-RUN git clone --recursive -b v2.0.11 https://github.com/RedisJSON/RedisJSON.git /build
+RUN git clone --recursive -b v2.0.9 https://github.com/RedisJSON/RedisJSON.git /build
 WORKDIR /build
 # RUN git submodule pull
 RUN cargo build --release

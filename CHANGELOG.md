@@ -9,7 +9,11 @@
 
 + redis 7.0.3->6.2.7
 + RedisBloom 2.2.15->2.2.18
-+ RedisJSON 2.0.9->2.0.11
+
+## 移除
+
++ RedisJSON
++ redistree
 
 # v1.2.0
 

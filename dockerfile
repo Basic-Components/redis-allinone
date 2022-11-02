@@ -58,12 +58,12 @@ RUN chmod +x /etc/redis-plugins/redisroaring/libredis-roaring.so
 #redisql
 COPY ./RediSQL/${TARGETPLATFORM}/redisql.so /etc/redis-plugins/redisql/redisql.so
 RUN chmod +x /etc/redis-plugins/redisql/redisql.so
-#redisjson
-COPY --from=redisjson_builder /build/target/release/librejson.so /etc/redis-plugins/redisjson/librejson.so
-RUN chmod +x /etc/redis-plugins/redisjson/librejson.so
-#redistree
-COPY --from=redistree_builder /build/target/release/libretree.so /etc/redis-plugins/libretree/libretree.so
-RUN chmod +x /etc/redis-plugins/libretree/libretree.so
+# #redisjson
+# COPY --from=redisjson_builder /build/target/release/librejson.so /etc/redis-plugins/redisjson/librejson.so
+# RUN chmod +x /etc/redis-plugins/redisjson/librejson.so
+# #redistree
+# COPY --from=redistree_builder /build/target/release/libretree.so /etc/redis-plugins/libretree/libretree.so
+# RUN chmod +x /etc/redis-plugins/libretree/libretree.so
 #redistimeseries
 COPY --from=redistimeseries_builder /build/bin/redistimeseries.so /etc/redis-plugins/redistimeseries/redistimeseries.so
 RUN chmod +x /etc/redis-plugins/redistimeseries/redistimeseries.so

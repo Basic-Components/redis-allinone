@@ -1,74 +1,74 @@
 version: '3.6'
 services:
   redis-node1:
-    image: hsz1273327/redis-allinone:redis6-1.2.1
+    image: hsz1273327/redis-allinone:redis6-latest
     networks:
       hfnet:
         ipv4_address: 192.168.55.11
     ports:
       - "6381:6379"
     command:
-      - "/redis-config/redis.cluster.conf"
+      - "/etc/redis-config/redis.cluster.conf"
       - "--cluster-announce-hostname"
       - "redis-node1"
 
   redis-node2:
-    image: hsz1273327/redis-allinone:redis6-1.2.1
+    image: hsz1273327/redis-allinone:redis6-latest
     networks:
       hfnet:
         ipv4_address: 192.168.55.12
     ports:
       - "6382:6379"
     command:
-      - "/redis-config/redis.cluster.conf"
+      - "/etc/redis-config/redis.cluster.conf"
       - "--cluster-announce-hostname"
       - "redis-node2"
 
   redis-node3:
-    image: hsz1273327/redis-allinone:redis6-1.2.1
+    image: hsz1273327/redis-allinone:redis6-latest
     networks:
       hfnet:
         ipv4_address: 192.168.55.13
     ports:
       - "6383:6379"
     command:
-      - "/redis-config/redis.cluster.conf"
+      - "/etc/redis-config/redis.cluster.conf"
       - "--cluster-announce-hostname"
       - "redis-node3"
 
   redis-node4:
-    image: hsz1273327/redis-allinone:redis6-1.2.1
+    image: hsz1273327/redis-allinone:redis6-latest
     networks:
       hfnet:
         ipv4_address: 192.168.55.14
     ports:
       - "6384:6379"
     command:
-      - "/redis-config/redis.cluster.conf"
+      - "/etc/redis-config/redis.cluster.conf"
       - "--cluster-announce-hostname"
       - "redis-node4"
 
   redis-node5:
-    image: hsz1273327/redis-allinone:redis6-1.2.1
+    image: hsz1273327/redis-allinone:redis6-latest
     networks:
       hfnet:
         ipv4_address: 192.168.55.15
     ports:
       - "6385:6379"
     command:
-      - "/redis-config/redis.cluster.conf"
+      - "/etc/redis-config/redis.cluster.conf"
       - "--cluster-announce-hostname"
       - "redis-node5"
 
   redis-node6:
-    image: hsz1273327/redis-allinone:redis6-1.2.1
+    image: hsz1273327/redis-allinone:redis6-latest
     networks:
       hfnet:
         ipv4_address: 192.168.55.16
     ports:
       - "6386:6379"
     command:
-      - "/redis-config/redis.cluster.conf"
+      - "/etc/redis-config/redis.cluster.conf"
       - "--cluster-announce-hostname"
       - "redis-node6"
 

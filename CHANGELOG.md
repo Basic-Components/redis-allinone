@@ -1,7 +1,13 @@
 # redis6-1.3.0
 
+## 新增插件
+
 + 新增插件TairZset
 + 新增插件TairString
+
+## bug修复
+
++ 修正了无法启动集群的问题
 
 # redis6-1.2.1
 

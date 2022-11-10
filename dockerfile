@@ -16,21 +16,6 @@ RUN git clone --recursive https://github.com/aviggiano/redis-roaring.git /build
 WORKDIR /build
 RUN bash configure.sh
 
-# FROM --platform=${TARGETPLATFORM} rust:1.62.0-slim-bullseye as redisjson_builder
-# RUN apt update -y && apt install -y --no-install-recommends ca-certificates curl git build-essential libclang-dev && rm -rf /var/lib/apt/lists/*
-# WORKDIR /
-# RUN git clone --recursive -b v2.0.11 https://github.com/RedisJSON/RedisJSON.git /build
-# WORKDIR /build
-# RUN cargo build --release
-
-# FROM --platform=${TARGETPLATFORM} rust:1.62.0-slim-bullseye as redistree_builder
-# RUN apt update -y && apt install -y --no-install-recommends ca-certificates curl git build-essential libclang-dev && rm -rf /var/lib/apt/lists/*
-# WORKDIR /
-# RUN git clone --recursive -b v0.1.0 https://github.com/OhBonsai/RedisTree.git /build
-# WORKDIR /build
-# RUN cargo build --release
-
-
 FROM --platform=${TARGETPLATFORM} redis:6.2.7-bullseye as redistimeseries_builder
 RUN apt update -y && apt install -y --no-install-recommends ca-certificates curl git build-essential && rm -rf /var/lib/apt/lists/*
 WORKDIR /
@@ -40,6 +25,57 @@ RUN ./deps/readies/bin/getpy3
 RUN ./system-setup.py
 RUN bash -l -c "make build"
 
+FROM --platform=${TARGETPLATFORM} redis:6.2.7-bullseye as TairString_builder
+ENV TAIRSTRING_URL https://github.com/alibaba/TairString.git
+RUN set -ex; \
+    \
+    BUILD_DEPS=' \
+        ca-certificates \
+        cmake \
+        gcc \
+        git \
+        g++ \
+        make \
+    '; \
+    apt-get update; \
+    apt-get install -y $BUILD_DEPS --no-install-recommends; \
+    rm -rf /var/lib/apt/lists/*; \
+    git clone "$TAIRSTRING_URL"; \
+    cd TairString; \
+    mkdir -p build; \
+    cd build; \
+    cmake ..; \
+    make -j; \
+    cd ..; \
+    cp lib/tairstring_module.so /usr/local/lib/; \
+    \
+    apt-get purge -y --auto-remove $BUILD_DEPS
+
+FROM --platform=${TARGETPLATFORM} redis:6.2.7-bullseye as TairZset_builder
+ENV TAIRZSET_URL https://github.com/alibaba/TairZset.git
+RUN set -ex; \
+    \
+    BUILD_DEPS=' \
+        ca-certificates \
+        cmake \
+        gcc \
+        git \
+        g++ \
+        make \
+    '; \
+    apt-get update; \
+    apt-get install -y $BUILD_DEPS --no-install-recommends; \
+    rm -rf /var/lib/apt/lists/*; \
+    git clone "$TAIRZSET_URL"; \
+    cd TairZset; \
+    mkdir -p build; \
+    cd build; \
+    cmake ..; \
+    make -j; \
+    cd ..; \
+    cp lib/tairzset_module.so /usr/local/lib/; \
+    \
+    apt-get purge -y --auto-remove $BUILD_DEPS
 
 FROM --platform=${TARGETPLATFORM} redis:6.2.7-bullseye as img
 ARG TARGETPLATFORM ${TARGETPLATFORM}
@@ -58,15 +94,18 @@ RUN chmod +x /etc/redis-plugins/redisroaring/libredis-roaring.so
 #redisql
 COPY ./RediSQL/${TARGETPLATFORM}/redisql.so /etc/redis-plugins/redisql/redisql.so
 RUN chmod +x /etc/redis-plugins/redisql/redisql.so
-# #redisjson
-# COPY --from=redisjson_builder /build/target/release/librejson.so /etc/redis-plugins/redisjson/librejson.so
-# RUN chmod +x /etc/redis-plugins/redisjson/librejson.so
-# #redistree
-# COPY --from=redistree_builder /build/target/release/libretree.so /etc/redis-plugins/libretree/libretree.so
-# RUN chmod +x /etc/redis-plugins/libretree/libretree.so
 #redistimeseries
 COPY --from=redistimeseries_builder /build/bin/redistimeseries.so /etc/redis-plugins/redistimeseries/redistimeseries.so
 RUN chmod +x /etc/redis-plugins/redistimeseries/redistimeseries.so
+
+#TairString
+COPY --from=TairString_builder /usr/local/lib/tairstring_module.so /etc/redis-plugins/tairstring/tairstring_module.so
+RUN chmod +x /etc/redis-plugins/tairstring/tairstring_module.so
+
+#TairZset
+COPY --from=TairZset_builder /usr/local/lib/tairzset_module.so /etc/redis-plugins/tairzset/tairzset_module.so
+RUN chmod +x /etc/redis-plugins/tairzset/tairzset_module.so
+
 # configs
 COPY ./conf /etc/redis-config
 # cmd

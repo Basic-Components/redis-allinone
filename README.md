@@ -45,6 +45,10 @@
         + 主从模式
         + 集群模式
 
+6. [TairZset](https://github.com/alibaba/TairZset)
+
+7. [TairString](https://github.com/alibaba/TairString)
+
 ## 使用方法
 
 默认配置文件在镜像中的[/etc/redis-config/redis.conf](https://github.com/Basic-Components/redis-allinone/blob/master/conf/redis.conf);默认集群配置在镜像中的[/etc/redis-config/redis.cluster.conf](https://github.com/Basic-Components/redis-allinone/blob/master/conf/redis.cluster.conf),使用时如果要添加其他参数,需要覆盖dockerfile中的`cmd`,比如在`docker-compose`中配置`command: ["/etc/redis-config/redis.conf", "--requirepass", "admin"]`

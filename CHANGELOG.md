@@ -1,3 +1,8 @@
+# redis6-1.3.0
+
++ 新增插件TairZset
++ 新增插件TairString
+
 # redis6-1.2.1
 
 ## 项目更新

@@ -81,6 +81,7 @@ RUN set -ex; \
 
 FROM --platform=${TARGETPLATFORM} redis:7.0.5-bullseye as TairHash_builder
 ENV TAIRHASH_URL https://github.com/alibaba/TairHash.git
+ENV TAIRHASH_TAG release-v0.0.2-20211120
 RUN set -ex; \
     \
     BUILD_DEPS=' \
@@ -94,7 +95,7 @@ RUN set -ex; \
     apt-get update; \
     apt-get install -y $BUILD_DEPS --no-install-recommends; \
     rm -rf /var/lib/apt/lists/*; \
-    git clone "$TAIRHASH_URL"; \
+    git clone -b "$TAIRHASH_TAG" "$TAIRHASH_URL"; \
     cd TairHash; \
     mkdir -p build; \
     cd build; \

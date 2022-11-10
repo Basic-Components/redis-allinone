@@ -38,12 +38,25 @@
         + 单机模式
         + 主从模式
         + 集群模式
-5. [RedisJSON](https://github.com/RedisJSON/RedisJSON)
+
+5. [RedisTimeSeries](https://github.com/RedisTimeSeries/RedisTimeSeries)
     + 可用范围:
         + 单机模式
         + 主从模式
         + 集群模式
-6. [RedisTimeSeries](https://github.com/RedisTimeSeries/RedisTimeSeries)
+
+6. [TairZset](https://github.com/alibaba/TairZset)
+    + 可用范围:
+        + 单机模式
+        + 主从模式
+        + 集群模式
+
+7. [TairString](https://github.com/alibaba/TairString)
+    + 可用范围:
+        + 单机模式
+        + 主从模式
+        + 集群模式
+8. [TairHash](https://github.com/alibaba/TairHash)
     + 可用范围:
         + 单机模式
         + 主从模式

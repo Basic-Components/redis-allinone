@@ -1,3 +1,11 @@
+# redis7-1.3.0
+
+## 新增插件
+
++ 新增插件TairZset
++ 新增插件TairString
++ 新增插件TairHash
+
 # redis7-1.2.1
 
 ## 项目更新
